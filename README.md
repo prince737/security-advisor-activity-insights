@@ -36,7 +36,7 @@ You can use the following steps to install an agent that will run on one of your
      - `helm ls | grep activity-insights` should return a helm release named `activity-insights` in DEPLOYED state, use `--tls` flag if helm is TLS enabled.
      - `kubectl get pods -n security-advisor-insights | grep activity-insights` should return one pod related to `activity-insights` in the state "RUNNING".
      **Note**: If you create your COS instance and bucket outside of the Security Advisor UI, be sure to use the following naming convention for the bucket: `sa.<account_id>.telemetric.<cos_region>`. Also be sure to set up service-to-service [authorization](https://cloud.ibm.com/docs/iam?topic=iam-serviceauth#serviceauth) in IBM Cloud IAM to give Security Advisor permission to read data from your COS instance. Set the `source` service to Security Advisor and the `target` service to your  Cloud Object Storage instance with a `Reader` IAM role.   
-6. Take the rule packages and upload to your cos bucket. A default set of rule packages can be found [here](https://github.ibm.com/security-services/security-advisor-project-management/wiki/Doc-page-for-Activity-Insights).
+6. Take the rule packages and upload to your cos bucket. A default set of rule packages can be found [here](https://cloud.ibm.com/docs/services/security-advisor?topic=security-advisor-setup-activity#setup-activity).
 
 # Deleting the setup
 1. `helm del --purge activity-insights` , use `--tls` flag if helm is TLS enabled.
