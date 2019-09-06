@@ -25,16 +25,16 @@ You can use the following steps to install an agent that will run on one of your
 3. Change into the file directory. `cd security-advisor-activity-insights`
 4. Run the install command. 
     ```
-    ./activity-insight-install.sh <cos_region> <cos_api_key> <at_region> <account_api_key> <account_spaces>
+    ./activity-insight-install.sh <cos_region> <cos_api_key> <at_region> <at_service_api_key>
     ```
      - The `<cos_region>` value is the region in which your COS is deployed. Options include `us-south` or `eu-gb`.
-     - The <cos_api_key> value is the [api key](https://cloud.ibm.com/docs/services/cloud-object-storage/iam?topic=cloud-object-storage-service-credentials#service-credentials) that you created to access your COS instance and bucket. The key should have the Writer IAM service role.
-     - The <at_region> value is either us-south or eu-gb - the region of the [Activity Tracker](https://cloud.ibm.com/docs/services/cloud-activity-tracker?topic=cloud-activity-tracker-getting-started-with-cla#getting-started-with-cla) instance
-     - The <account_api_key> region is the platform [api key](https://cloud.ibm.com/docs/iam?topic=iam-manapikey#ibm-cloud-api-keys) of your IBM Cloud account
-     - <account_spaces> comma seperate list of [IBM account space GUID](https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud_commands_account#ibmcloud_account_space)
+     - The `<cos_api_key>` value is the [api key](https://cloud.ibm.com/docs/services/cloud-object-storage/iam?topic=cloud-object-storage-service-credentials#service-credentials) that you created to access your COS instance and bucket. The key should have the Writer IAM service role.
+     - The `<at_region>` the region of the logDNA AT instance, example: us-south (https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-regions).  
+     - The `<at_service_api_key>` is a logDNA AT [service key](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-export#api) for your logDNA AT instance.
+
 5. Verify the installation :
      - `helm ls | grep activity-insights` should return a helm release named `activity-insights` in DEPLOYED state, use `--tls` flag if helm is TLS enabled.
-     - `kubectl get pods -n security-advisor-insights | grep activity-insights` should return one pod related to `activity-insights` in the state "RUNNING".
+     - `kubectl get pods -n security-advisor-insights | grep activity-insights` should return one pod related to `activity-insights` in the state "RUNNING".                 
      **Note**: If you create your COS instance and bucket outside of the Security Advisor UI, be sure to use the following naming convention for the bucket: `sa.<account_id>.telemetric.<cos_region>`. Also be sure to set up service-to-service [authorization](https://cloud.ibm.com/docs/iam?topic=iam-serviceauth#serviceauth) in IBM Cloud IAM to give Security Advisor permission to read data from your COS instance. Set the `source` service to Security Advisor and the `target` service to your  Cloud Object Storage instance with a `Reader` IAM role.   
 6. Take the rule packages and upload to your cos bucket. A default set of rule packages can be found [here](https://cloud.ibm.com/docs/services/security-advisor?topic=security-advisor-setup-activity#activity-adding-rules).
 
