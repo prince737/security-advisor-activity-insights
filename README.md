@@ -20,6 +20,10 @@ You can use the following steps to install an agent that will run on one of your
     - If you are using workstation to handle installation of analytics components in multiple clusters and Helm TLS is enabled, be sure that the TLS configuration in your workstation is current and corresponds to the cluster where you are planing to install these components.
 
 # Steps to run
+1. Current supported versions:        
+   - v1.0 : Go to `v1.0` directory and download the tar file.                                  
+      **Note**: This version will not work after 30th Sept 2019 and will be removed.
+   - v2.0: Go to `v2.0` directory and download the tar file.
 1. Download the tar file.
 2. Unzip the file by running `tar -xvf security-advisor-activity-insights.tar` in your terminal.
 3. Change into the file directory. `cd security-advisor-activity-insights`
