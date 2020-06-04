@@ -23,17 +23,21 @@ You can use the following steps to install an agent that will run on one of your
 3. Change into the file directory. `cd security-advisor-activity-insights`
 4. Run the install command. 
     ```
-    ./activity-insight-install.sh <cos_region> <cos_api_key> <at_region> <at_service_api_key>
+    ./activity-insight-install.sh <cos_region> <cos_api_key> <cos_bucket> <at_region> <at_service_api_key> <default_memory_request> <memory_limit>
     ```
      - The `<cos_region>` value is the region in which your COS is deployed. Options include `us-south` or `eu-gb`.
      - The `<cos_api_key>` value is the [api key](https://cloud.ibm.com/docs/services/cloud-object-storage/iam?topic=cloud-object-storage-service-credentials#service-credentials) that you created to access your COS instance and bucket. The key should have the Writer IAM service role.
+     - The `<cos_bucket>` value is the name of bucket you created in COS istance.
      - The `<at_region>` the region of the logDNA AT instance, example: us-south (https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-regions).  
      - The `<at_service_api_key>` is a logDNA AT [service key](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-export#api) for your logDNA AT instance.
+     - Optional : `<default_memory_request>` and `<memory_limit>`.  
+     `<default_memory_request>` is default memory requested at time of POD creation.  
+     `<memory_limit>` is maximum memory which will be provided to POD by cluster.
+     In case values are not provided, default memory 256Mi and memory limit of 512Mi is implemented.
 
 5. Verify the installation :
      - `helm ls --namespace security-advisor-activity-insights` should list `activity-insights` as a release.
-     - `kubectl get pods -n security-advisor-activity-insights | grep activity-insights` should return one pod related to `activity-insights` in the state "RUNNING".                 
-     **Note**: If you create your COS instance and bucket outside of the Security Advisor UI, be sure to use the following naming convention for the bucket: `sa.<account_id>.telemetric.<cos_region>`. Also be sure to set up service-to-service [authorization](https://cloud.ibm.com/docs/iam?topic=iam-serviceauth#serviceauth) in IBM Cloud IAM to give Security Advisor permission to read data from your COS instance. Set the `source` service to Security Advisor and the `target` service to your  Cloud Object Storage instance with a `Reader` IAM role.   
+     - `kubectl get pods -n security-advisor-activity-insights | grep activity-insights` should return one pod related to `activity-insights` in the state "RUNNING".                   
 6. Take the rule packages and upload to your cos bucket. A default set of rule packages can be found [here](https://cloud.ibm.com/docs/services/security-advisor?topic=security-advisor-setup-activity#activity-adding-rules).
 
 # Deleting the setup
