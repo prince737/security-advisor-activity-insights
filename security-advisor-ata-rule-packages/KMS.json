@@ -6,6 +6,11 @@
 			"fact": "action",
 			"operator": "equal",
 			"value": "kms.secrets.delete"
+		},
+		{
+			"fact": "action",
+			"operator": "equal",
+			"value": "kms.secrets.rotate"
 		}
 		]
 	},
@@ -111,6 +116,11 @@
 			"fact": "action",
 			"operator": "equal",
 			"value": "kms.binding.delete"
+		},
+		{
+			"fact": "action",
+			"operator": "equal",
+			"value": "kms.policies.write"
 		}
 		
 		]

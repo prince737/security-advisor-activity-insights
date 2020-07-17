@@ -1,0 +1,96 @@
+[
+{
+    "comment": "The following is a service access rule instantiated for Cloudant. High risk API",
+    "conditions": {
+        "any": [{
+                "fact": "action",
+                "operator": "equal",
+                "value": "cloudantnosqldb.users-database.delete"
+            }, {
+                "fact": "action",
+                "operator": "equal",
+                "value": "cloudantnosqldb.database.delete"
+            }, {
+                "fact": "action",
+                "operator": "equal",
+                "value": "cloudantnosqldb.replicator-database.delete"
+            }, {
+                "fact": "action",
+                "operator": "equal",
+                "value": "cloudantnosqldb.users-database.delete"
+            }, {
+                "fact": "action",
+                "operator": "equal",
+                "value": "cloudantnosqldb.design-document.write"
+            }
+        ]
+    },
+    "event": {
+        "type": "cloudantdb level changes",
+        "params": {
+            "findingType": "cloudantdb-modification"
+        }
+    }
+},
+{	"comment": "Indicative Cloudant API exceed threshold within time window",
+	"conditions": {
+		"all": [{
+			"any": [{
+                "fact": "action",
+                "operator": "equal",
+                "value": "cloudantnosqldb.users-database.create"
+            },
+			{
+                "fact": "action",
+                "operator": "equal",
+                "value": "cloudantnosqldb.replicator-database.create"
+            },
+			{
+                "fact": "action",
+                "operator": "equal",
+                "value": "cloudantnosqldb.database.create"
+            },
+			{
+				"fact": "action",
+				"operator": "equal",
+				"value": "cloudantnosqldb.users-database.create"
+            },
+            {
+				"fact": "action",
+				"operator": "equal",
+				"value": "cloudantnosqldb.users.write"
+            },
+            {
+				"fact": "action",
+				"operator": "equal",
+				"value": "cloudantnosqldb.users-design-document.write"
+            },
+            {
+				"fact": "action",
+				"operator": "equal",
+				"value": "cloudantnosqldb.data-document.write"
+            }           
+			]
+		},
+		{
+			"fact": "occurrences",
+			"operator": "greaterThan",
+			"value": 1000
+		},
+		{
+			"fact": "withInLast",
+			"operator": "equal",
+			"value": "30 minutes"
+		}
+		]
+	},
+
+	"event": {
+		"type": "cloudant-indicative-api-threshold",
+		"params": {
+			"findingType": "cloudant-indicative-api-threshold"
+		}
+	},
+	"type": "aggregate"
+}
+]
