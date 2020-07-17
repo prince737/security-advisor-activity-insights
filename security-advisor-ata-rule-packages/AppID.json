@@ -5,6 +5,76 @@
 					"fact": "action",
 					"operator": "equal",
 					"value": "update.idpConfig"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.idpConfig.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.redirectURIs.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.isProfilesActive.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.userRoles.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.roles.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.role.update"
+				}, 
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.applications.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.application.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.applicationScopes.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.sso.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.rateLimit.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.changePassword.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.revokeRefreshToken.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "appid.users.update"
 				}
 			]
 		},
@@ -62,6 +132,18 @@
 							"fact": "action",
 							"operator": "equal",
 							"value": "delete.cloudDirectoryUsers"
+						}, {
+							"fact": "action",
+							"operator": "equal",
+							"value": "appid.cloudDirectoryUsers.delete"
+						}, {
+							"fact": "action",
+							"operator": "equal",
+							"value": "appid.user.remove"
+						}, {
+							"fact": "action",
+							"operator": "equal",
+							"value": "appid.users.remove"
 						}
 					]
 				}, {
@@ -115,7 +197,6 @@
 					"operator": "equal",
 					"value": "appid.binding.delete"
 				}
-
 			]
 		},
 		"event": {

@@ -29,6 +29,26 @@
 					"fact": "action",
 					"operator": "equal",
 					"value": "iam-identity.policy.update"
+				}, {
+					"fact": "action",
+					"operator": "equal",
+					"value": "iam-identity.serviceid-apikey.update"
+				}, {
+					"fact": "action",
+					"operator": "equal",
+					"value": "iam-identity.account-serviceid.update"
+				}, {
+					"fact": "action",
+					"operator": "equal",
+					"value": "user-management.user.delete"
+				}, {
+					"fact": "action",
+					"operator": "equal",
+					"value": "user-management.user.create"
+				}, {
+					"fact": "action",
+					"operator": "equal",
+					"value": "iam-am.policy.update"
 				}
 			]
 		},
@@ -155,6 +175,10 @@
 							"fact": "action",
 							"operator": "equal",
 							"value": "iam-am.policy.delete"
+						}, {
+							"fact": "action",
+							"operator": "equal",
+							"value": "iam-groups.members.delete"
 						}
 					]
 				}, {
@@ -208,6 +232,10 @@
 							"fact": "action",
 							"operator": "equal",
 							"value": "iam-am.policy.delete"
+						}, {
+							"fact": "action",
+							"operator": "equal",
+							"value": "iam-groups.members.delete"
 						}
 					]
 				}, {
@@ -262,6 +290,10 @@
 							"fact": "action",
 							"operator": "equal",
 							"value": "iam-am.policy.delete"
+						}, {
+							"fact": "action",
+							"operator": "equal",
+							"value": "iam-groups.members.delete"
 						}
 					]
 				}, {

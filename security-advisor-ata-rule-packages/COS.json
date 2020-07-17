@@ -20,7 +20,22 @@
 			"fact": "action",
 			"operator": "equal",
 			"value": "cloud-object-storage.bucket-cors.delete"
-		}
+		},
+		{
+            "fact": "action",
+            "operator": "equal",
+            "value": "cloud-object-storage.bucket-lifecycle.delete"
+		},
+		{
+            "fact": "action",
+            "operator": "equal",
+            "value": "cloud-object-storage.resource-configuration.update"
+		},
+		{
+            "fact": "action",
+            "operator": "equal",
+            "value": "cloud-object-storage.object-retention.update"
+        }
 
 		]
 	},
@@ -33,7 +48,7 @@
 },
 
 
-{	"comment": "COS bucket create/delete exceeded threshold within time window",
+{	"comment": "COS bucket/object create/delete exceeded threshold within time window",
 	"conditions": {
 		"all": [{
 			"any": [{
@@ -45,6 +60,21 @@
 				"fact": "action",
 				"operator": "equal",
 				"value": "cloud-object-storage.bucket.delete"
+			},
+			{
+				"fact": "action",
+				"operator": "equal",
+				"value": "cloud-object-storage.object.delete"
+			},
+			{
+				"fact": "action",
+				"operator": "equal",
+				"value": "cloud-object-storage.objects.delete"
+			},
+			{
+				"fact": "action",
+				"operator": "equal",
+				"value": "cloud-object-storage.object-batch.delete"
 			}
 			]
 		},
