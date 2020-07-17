@@ -51,32 +51,7 @@
 			"fact": "action",
 			"operator": "equal",
 			"value": "containers-kubernetes.service.unbind"
-		},
-		{
-            "fact": "action",
-            "operator": "equal",
-            "value": "containers-kubernetes.alb.delete"
-        },
-        {
-            "fact": "action",
-            "operator": "equal",
-            "value": "containers-kubernetes.cluster.delete"
-		},
-		{
-            "fact": "action",
-            "operator": "equal",
-            "value": "containers-kubernetes.cluster.create"
-		},
-		{
-            "fact": "action",
-            "operator": "equal",
-            "value": "containers-kubernetes.worker.create"
-        },
-        {
-            "fact": "action",
-            "operator": "equal",
-            "value": "containers-kubernetes.worker.delete"
-        }
+		}
 		]
 	},
 	"event": {
@@ -114,17 +89,7 @@
 			"fact": "action",
 			"operator": "equal",
 			"value": "containers-kubernetes.logging-config.update"
-		},
-		{
-            "fact": "action",
-            "operator": "equal",
-            "value": "containers-kubernetes.logging-filter.delete"
-		},
-		{
-            "fact": "action",
-            "operator": "equal",
-            "value": "containers-kubernetes.logging-autoupdate.changed"
-        }		
+		}		
 		]
 	},
 	"event": {

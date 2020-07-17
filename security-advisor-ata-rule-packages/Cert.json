@@ -13,15 +13,8 @@
 					"fact": "action",
 					"operator": "equal",
 					"value": "cloudcerts.notification-channel.state"
-				}, {
-					"fact": "action",
-					"operator": "equal",
-					"value": "cloudcerts.notification-channel.set-off"
-				}, {
-					"fact": "action",
-					"operator": "equal",
-					"value": "cloudcerts.notification-channel.set-on"
 				}
+
 			]
 		},
 		"event": {
