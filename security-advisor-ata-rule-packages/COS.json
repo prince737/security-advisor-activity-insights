@@ -1,123 +1,121 @@
 [
-{	"comment": "Very high risk COS activity",
-	"conditions": {
-		"any": [{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.bucket-acl.create"
-		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.bucket-cors.create"
-		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.bucket-cors.update"
-		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.bucket-cors.delete"
-		}
-
-		]
-	},
-	"event": {
-		"type": "COS security configuration",
-		"params": {
-			"findingType": "cos-sec-conf"
-		}
-	}
-},
-
-
-{	"comment": "COS bucket create/delete exceeded threshold within time window",
-	"conditions": {
-		"all": [{
-			"any": [{
-				"fact": "action",
-				"operator": "equal",
-				"value": "cloud-object-storage.bucket.create"
-			},
-			{
-				"fact": "action",
-				"operator": "equal",
-				"value": "cloud-object-storage.bucket.delete"
-			}
+	{
+		"comment": "Very high risk COS activity",
+		"conditions": {
+			"any": [
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.bucket-acl.create"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.bucket-cors.create"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.bucket-cors.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.bucket-cors.delete"
+				}
 			]
 		},
-		{
-			"fact": "occurrences",
-			"operator": "greaterThan",
-			"value": 1000
-		},
-		{
-			"fact": "withInLast",
-			"operator": "equal",
-			"value": "30 minutes"
-		}
-		]
-	},
-	"event": {
-		"type": "bucket-create-delete",
-		"params": {
-			"findingType": "cos-bucket-create-delete-threshold"
+		"event": {
+			"type": "COS security configuration",
+			"params": {
+				"findingType": "cos-sec-conf"
+			}
 		}
 	},
-	"type": "aggregate"
-},
-
-
-{	"comment": "service instance high risk API",
-	"conditions": {
-		"any": [{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.instance.create"
+	{
+		"comment": "COS bucket create/delete exceeded threshold within time window",
+		"conditions": {
+			"all": [
+				{
+					"any": [
+						{
+							"fact": "action",
+							"operator": "equal",
+							"value": "cloud-object-storage.bucket.create"
+						},
+						{
+							"fact": "action",
+							"operator": "equal",
+							"value": "cloud-object-storage.bucket.delete"
+						}
+					]
+				},
+				{
+					"fact": "occurrences",
+					"operator": "greaterThan",
+					"value": 1000
+				},
+				{
+					"fact": "withInLast",
+					"operator": "equal",
+					"value": "30 minutes"
+				}
+			]
 		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.instance.update"
+		"event": {
+			"type": "bucket-create-delete",
+			"params": {
+				"findingType": "cos-bucket-create-delete-threshold"
+			}
 		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.instance.delete"
-		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.key.create"
-		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.key.delete"
-		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.binding.create"
-		},
-		{
-			"fact": "action",
-			"operator": "equal",
-			"value": "cloud-object-storage.binding.delete"
-		}
-		
-		]
+		"type": "aggregate"
 	},
-	"event": {
-		"type": "COS service changes",
-		"params": {
-			"findingType": "cos-service"
+	{
+		"comment": "service instance high risk API",
+		"conditions": {
+			"any": [
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.instance.create"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.instance.update"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.instance.delete"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.key.create"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.key.delete"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.binding.create"
+				},
+				{
+					"fact": "action",
+					"operator": "equal",
+					"value": "cloud-object-storage.binding.delete"
+				}
+			]
+		},
+		"event": {
+			"type": "COS service changes",
+			"params": {
+				"findingType": "cos-service"
+			}
 		}
 	}
-}
-
-
-
 ]
