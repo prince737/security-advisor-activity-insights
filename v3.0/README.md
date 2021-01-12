@@ -23,7 +23,7 @@ You can use the following steps to install an agent that will run on one of your
 3. Change into the file directory. `cd security-advisor-activity-insights`
 4. Run the install command. 
     ```
-    ./activity-insight-install.sh <cos_region> <cos_api_key> <cos_bucket> <at_region> <at_service_api_key> <default_memory_request> <memory_limit>
+    ./activity-insight-install.sh -c <cos_region> -k <cos_api_key> -b <cos_bucket> -a <at_region> -s <at_service_api_key> -m <default_memory_request> -l <memory_limit> -n <namespace>
     ```
      - The `<cos_region>` value is the region in which your COS is deployed. Options include `us-south` or `eu-gb`.
      - The `<cos_api_key>` value is the [api key](https://cloud.ibm.com/docs/services/cloud-object-storage/iam?topic=cloud-object-storage-service-credentials#service-credentials) that you created to access your COS instance and bucket. The key should have the Writer IAM service role.
@@ -32,14 +32,15 @@ You can use the following steps to install an agent that will run on one of your
      - The `<at_service_api_key>` is a logDNA AT [service key](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-export#api) for your logDNA AT instance.
      - Optional : `<default_memory_request>` and `<memory_limit>`.  
      `<default_memory_request>` is default memory requested at time of POD creation.  
-     `<memory_limit>` is maximum memory which will be provided to POD by cluster.
+     `<memory_limit>` is maximum memory which will be provided to POD by cluster.  
+     `<namespace>` is the Kubernetes namespace to install activity-insights-chart. Default: `security-advisor-activity-insights`  
      In case values are not provided, default memory 256Mi and memory limit of 512Mi is implemented.
 
 5. Verify the installation :
-     - `helm ls --namespace security-advisor-activity-insights` should list `activity-insights` as a release.
-     - `kubectl get pods -n security-advisor-activity-insights | grep activity-insights` should return one pod related to `activity-insights` in the state "RUNNING".                   
+     - `helm ls --namespace <namespace>` should list `activity-insights` as a release.
+     - `kubectl get pods -n <namespace> | grep activity-insights` should return one pod related to `activity-insights` in the state "RUNNING".                   
 6. Take the rule packages and upload to your cos bucket. A default set of rule packages can be found [here](https://cloud.ibm.com/docs/services/security-advisor?topic=security-advisor-setup-activity#activity-adding-rules).
 
 # Deleting the setup
-1. `helm uninstall activity-insights --namespace security-advisor-activity-insights`
-2. `kubectl delete ns security-advisor-activity-insights`
+1. `helm uninstall activity-insights --namespace <namespace>`
+2. `kubectl delete ns <namespace>`
