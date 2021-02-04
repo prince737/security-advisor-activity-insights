@@ -3,10 +3,10 @@ You can use the following steps to install an agent that will run on one of your
 
 # Prerequisites
 - For Windows 10, Before starting with steps mentioned above, activate WSL (Windows Subsystem for Linux) and install [Ubuntu shell](https://win10faq.com/install-run-ubuntu-bash-windows-10/)
-- yq CLI
+- yq CLI version 4.0.0 or higher
   - For MacOS, Windows 10: Install [yq CLI](http://mikefarah.github.io/yq/)
-  - For CentOS, Red Hat and Ubuntu : Install yq CLI version 1.15 by running the folowing commands:      
-  `wget https://github.com/mikefarah/yq/releases/download/1.15.0/yq_linux_amd64`       
+  - For CentOS, Red Hat and Ubuntu : Install yq CLI version 4.4.1 by running the folowing commands:      
+  `wget https://github.com/mikefarah/yq/releases/download/v4.4.1/yq_linux_amd64.tar.gz`       
   `mv yq_linux_amd64 yq`     
   `chmod +x yq`     
   `mv yq /usr/local/bin/`       
