@@ -40,7 +40,7 @@ You can also capture the logs by passing the last n line of logs to capture. Def
 ./si-diagnostics-1.0-linux-amd64 -lines 500
 ```
 
-Once the diagnostic is complete it will emit a file si-diagnotics.txt in the same directory from where you ran the tool.
+Once the diagnostic is complete it will emit a file si-diagnostics.txt in the same directory from where you ran the tool.
 Attach this file to the IBM support ticket. Make sure the file doesn't have any API keys etc.
 The tool only sends a curl request to each of IBM iam , cos and activity tracker URLs to test the connectivity. So we don't
 expect any sensitive information in the txt. The logs which are captured by default ( 500 lines) are also not expected to contain
